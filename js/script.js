@@ -1,35 +1,44 @@
-let currentCurrencyElement = document.querySelector(".js-currentCurrency");
-let targetCurrencyElement = document.querySelector(".js-targetCurrency");
-let formElement = document.querySelector(".js-form");
-let finalResultElement = document.querySelector(".js-finalResult");
+{
+    const calculateResult = (currentCurrency, targetCurrency) => { //robię funkcję, która w zależności od waluty zwraca wynik (return). w parametrze jest current i target currency, bo ta funkcja, żeby policzyć wynik potrzebuje dostać kwotę w obecnej walucie i docelową walutę
+        const rateEUR = 4.54;
+        const rateUSD = 3.77;
+        const rateGBP = 5.24;
 
-let rateEUR = 4.54;
-let rateUSD = 3.77;
-let rateGBP = 5.24;
+        switch (targetCurrency) {
+            case "EUR":
+                return currentCurrency / rateEUR;
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
+            case "USD":
+                return currentCurrency / rateUSD;
 
-    let currentCurrency = +currentCurrencyElement.value;
-    let targetCurrency = targetCurrencyElement.value;
+            case "GBP":
+                return currentCurrency / rateGBP;
+        }
+    };
+ 
 
-    let finalResult;
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        
+        const currentCurrencyElement = document.querySelector(".js-currentCurrency");
+        const targetCurrencyElement = document.querySelector(".js-targetCurrency");
+        const finalResultElement = document.querySelector(".js-finalResult");
+    
+        const currentCurrency = +currentCurrencyElement.value
+        const targetCurrency = targetCurrencyElement.value
 
-    switch (targetCurrency) {
-        case "EUR":
-            finalResult = currentCurrency / rateEUR;
-            break;
+        const finalResult = calculateResult(currentCurrency, targetCurrency);
 
-        case "USD":
-            finalResult = currentCurrency / rateUSD;
-            break;
-
-        case "GBP":
-            finalResult = currentCurrency / rateGBP;
-            break;
-    }
-
-    finalResultElement.innerText = `${currentCurrency} PLN =  ${finalResult.toFixed(2)} ${targetCurrency}`;
-});
+        finalResultElement.innerText = `${currentCurrency} PLN =  ${finalResult.toFixed(2)} ${targetCurrency}`;
+    };
 
 
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
+
+        formElement.addEventListener("submit", onFormSubmit);
+    };
+
+    init();
+
+}
