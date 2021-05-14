@@ -1,5 +1,5 @@
 {
-    const calculateResult = (currentCurrency, targetCurrency) => { //robię funkcję, która w zależności od waluty zwraca wynik (return). w parametrze jest current i target currency, bo ta funkcja, żeby policzyć wynik potrzebuje dostać kwotę w obecnej walucie i docelową walutę
+    const calculateResult = (currentCurrency, targetCurrency) => {
         const rateEUR = 4.54;
         const rateUSD = 3.77;
         const rateGBP = 5.24;
