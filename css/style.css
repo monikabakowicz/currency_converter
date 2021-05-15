@@ -8,12 +8,12 @@ html {
 
 .body {
     font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     background-image: url("../images/sea-edge-79ab30e2.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
